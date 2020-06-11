@@ -1,0 +1,30 @@
+---
+- name: Add Kibana repository.
+  template:
+    src: kibana.repo.j2
+    dest: /etc/yum.repos.d/kibana.repo
+    mode: 0644
+
+- name: Install Kibana.
+  package:
+    name: "{{ kibana_package }}"
+    state: "{{ kibana_package_state }}"
+
+- name: Ensure Kibana is started and enabled at boot.
+  service:
+    name: kibana
+    state: started
+    enabled: true
+
+- name: Mkdir Kibana log path.
+  file:
+    path: "{{ kibana_logging_dist_dir }}"
+    state: directory
+    owner: kibana
+    group: kibana
+
+- name: Copy Kibana configuration.
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+  notify: restart kibana

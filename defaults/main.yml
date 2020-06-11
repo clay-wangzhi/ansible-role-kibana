@@ -1,0 +1,16 @@
+---
+kibana_version: "7.x"
+
+kibana_package: kibana
+kibana_package_state: present
+
+kibana_server_port: 5601
+kibana_server_host: "0.0.0.0"
+kibana_server_name: ""
+
+kibana_elasticsearch_url: "http://localhost:9200"
+kibana_elasticsearch_username: ""
+kibana_elasticsearch_password: ""
+
+kibana_logging_dist_dir: /var/log/kibana
+kibana_logging_dist: /var/log/kibana/kibana.log
