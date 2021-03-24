@@ -32,7 +32,8 @@ server.name: {{ kibana_server_name }}
 {% if kibana_version == "6.x" %}
 elasticsearch.url: {{ kibana_elasticsearch_url }}
 {% else %}
-elasticsearch.hosts: {{ kibana_elasticsearch_url }}
+elasticsearch.hosts:
+{{ kibana_elasticsearch_url | to_nice_yaml(indent=2) }}
 {% endif %}
 
 # When this setting's value is true Kibana uses the hostname specified in the server.host
