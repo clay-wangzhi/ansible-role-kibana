@@ -12,6 +12,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ```
 kibana_version: "7.x"
+kibana_dversion: "7.11.2"
 ```
 
 The version of kibana to install.
@@ -54,6 +55,8 @@ None.
   roles:
     - clay_wangzhi.kibana
   vars:
+    kibana_version: "7.x"
+    kibana_dversion: "7.11.2"
     kibana_server_host: "{{ansible_ssh_host}}"
     kibana_server_name: "{{inventory_hostname}}"
     kibana_elasticsearch_url: '["http://172.16.91.27:9200", "http://172.16.91.1:9200", "http://172.16.91.151:9200"]'
